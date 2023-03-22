@@ -1,0 +1,97 @@
+
+public class Main {
+    public static void main(String[] args) {
+        Teacher teacher = new Teacher();
+        teacher.statLine();
+        teacher.newBirthday(1);
+    }
+}
+
+
+
+public class Student {
+    public String name;
+    public int age;
+    private int averageMark;
+
+    public Student(String name, int age, int averageMark) {
+        this.name = name;
+        this.averageMark = averageMark;
+        this.age = age;
+    }
+
+    void setAverageMark(int markSetter) {
+        if (markSetter > 0 && markSetter <= 5) {
+            this.averageMark = markSetter;
+        }
+    }
+
+    int getAverageMark() {
+        return this.averageMark;
+    }
+
+    String getName() {
+        return this.name;
+    }
+
+    int getAge() {
+        return this.age;
+    }
+
+    void studentBirthday() {
+        this.age++;
+        System.out.println("Happy birthday " + this.name + "! You`re " + this.age);
+    }
+
+    void studentGradeGrow() {
+        if (averageMark <= 4) {
+            averageMark++;
+            System.out.println("My congratulations! Your grade is " + averageMark + " now");
+        }
+    }
+}
+public class Teacher {
+    private String teacherName;
+    private int teacherAge;
+    Student[] students = new Student[3];
+
+    Teacher(String teacherName, int teacherAge) {
+        this.teacherName = teacherName;
+        this.teacherAge = teacherAge;
+    }
+
+    Teacher() {
+        students[0] = new Student("Pavel", 16, 3);
+        students[1] = new Student("Dima", 22, 4);
+        students[2] = new Student("Vova", 24, 5);
+    }
+
+    void statLine() {
+        for (int i = 0; i < 3; i++) {
+            System.out.println(students[i].getName() + " " + students[i].getAge() + " Grade:" + students[i].getAverageMark());
+        }
+    }
+
+    void newBirthday(int i) {
+        students[i].studentBirthday();
+    }
+
+    String getTeacherName() {
+        return this.teacherName;
+    }
+
+    int getTeacherAge() {
+        return this.teacherAge;
+    }
+}
+
+public class University {
+    public static void main(String[] args) {
+        Teacher teacher1 = new Teacher("Petya", 73);
+        Teacher teacher2 = new Teacher("Jay", 89);
+        Teacher teacher3 = new Teacher("Wolter", 100);
+        System.out.println(teacher1.getTeacherName() + " " + teacher1.getTeacherAge());
+        System.out.println(teacher2.getTeacherName() + " " + teacher2.getTeacherAge());
+        System.out.println(teacher3.getTeacherName() + " " + teacher3.getTeacherAge());
+    }
+}
